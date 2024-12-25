@@ -1,0 +1,56 @@
+@mixin font($alias, $name) {
+  @font-face {
+    font-family: $alias;
+    src: url("~/assets/fonts/" + $name + ".woff2") format("woff2");
+    font-style: normal;
+  }
+}
+
+@mixin text-s {
+    font-family: $font-main;
+    font-size: 1.3rem;
+    line-height: 1.3rem;
+    font-weight: 500;
+}
+
+@mixin text-m {
+  font-family: $font-main;
+  font-size: 1.3rem;
+  line-height: 1.3rem;
+  font-weight: 400;
+}
+
+@mixin text-m-v2 {
+  font-family: $font-main;
+  font-size: 1.5rem;
+  line-height: 1.9rem;
+  font-weight: 500;
+}
+
+@mixin text-m-v3 {
+  font-family: $font-main;
+  font-size: 1.3rem;
+  line-height: 1.95rem;
+  font-weight: 400;
+}
+
+@mixin text-l {
+  font-family: $font-main;
+  font-size: 1.5rem;
+  line-height: 1.5rem;
+  font-weight: 400;
+}
+
+@mixin text-xl {
+  font-family: $font-main;
+  font-size: 2rem;
+  line-height: 2rem;
+  font-weight: 500;
+}
+
+@mixin text-l-v2 {
+  font-family: $font-main;
+  font-size: 1.5rem;
+  line-height: 1.5rem;
+  font-weight: 500;
+}
