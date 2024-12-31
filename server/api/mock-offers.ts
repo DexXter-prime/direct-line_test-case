@@ -3,7 +3,8 @@ export default defineEventHandler(() => {
         offers: [
             {
                 id: 1,
-                name: 'some name'
+                title: 'some name',
+                description: 'some description',
             },
         ],
     }

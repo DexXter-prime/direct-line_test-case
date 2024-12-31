@@ -45,8 +45,12 @@
     align-items: center;
   }
 
-  .menuLink {
+  .menuList_item {
     width: 8.6rem;
+  }
+
+  .menuLink {
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -60,9 +64,6 @@
   .menuLink_icon{
     width: 2rem;
     height: 2rem;
-    stroke: $blue_main;
-    fill: white;
-    background-color: $blue_main;
   }
 
   .menuLink_text {

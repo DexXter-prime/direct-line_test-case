@@ -1,6 +1,6 @@
 export const menuItems = [
     {
-        icon: 'favourite',
+        icon: 'heart',
         name: 'Избранное',
         link: '/favourite',
     },
