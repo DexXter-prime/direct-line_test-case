@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { filterItems } from 'assets/js/consts/consts';
+const filters = reactive(filterItems);
 
 const offerStore = useOfferStore();
 
@@ -19,6 +21,9 @@ const offerStore = useOfferStore();
 <template>
   <div class="container">
     <TheHeader />
+    <TheFilters
+        :filters="filters"
+    />
     <NuxtPage />
   </div>
 </template>

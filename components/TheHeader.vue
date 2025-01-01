@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { menuItems } from '~/assets/js/consts/consts';
+  import { menuItems } from 'assets/js/consts/consts';
   const headerMenuItems = reactive(menuItems);
 
 </script>
