@@ -2,7 +2,8 @@
 // enums
 export enum offerStatus {
     bagStatus = 'BAG',
-    mainOffers = 'MAIN_OFFERS'
+    stockStatus = 'STOCK',
+    selledStatus = 'SELLED',
 }
 
 // interfaces

@@ -12,11 +12,7 @@ interface IProps {
 
 <template>
   <div :class="$style.OfferList">
-      <OfferItem
-          v-for="(offer, index) in props.offers"
-          :key="`${index}_${offer.id}_${offer.title}`"
-          :offer="offer"
-      />
+
   </div>
 </template>
 

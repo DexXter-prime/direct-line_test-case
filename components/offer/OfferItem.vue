@@ -1,6 +1,8 @@
 <script setup lang="ts">
   import type { IOffer } from '~/types';
   import { formatNumberWithSpace } from 'assets/js/utils/numbers';
+  import { offerStatus } from "~/types";
+  import { useCssModule } from "vue";
 
   interface IProps {
     offer: IOffer
@@ -13,15 +15,54 @@
     productType: 'Вид товара',
     quantity: 'Количество',
     pricePerItem: 'Стоимость за штуку',
-    addToOffer: 'Добавить в сделки',
     amount: 'шт.',
+
+    addToOffer: 'Добавить в сделки',
+    pay: 'Оплатить',
+    payed: 'Оплачено',
   }
+
+  const $style = useCssModule();
+
 
   const props = defineProps<IProps>();
 
   const totalPrice = computed(() => formatNumberWithSpace(props.offer.price * props.offer.quantity));
   const priceForOneProduct = computed(() => formatNumberWithSpace(props.offer.price));
+  const isSelled = computed(() => props.offer.status === offerStatus.selledStatus);
 
+  const offerStore = useOfferStore();
+
+  function toggleLike(): void {
+    offerStore.toggleLikeOffer(props.offer.id)
+  }
+
+  function setOfferStatus() {
+    switch (props.offer.status) {
+      case offerStatus.stockStatus:
+        offerStore.setOfferStatus(props.offer.id, offerStatus.bagStatus);
+        break;
+      case offerStatus.bagStatus:
+        offerStore.setOfferStatus(props.offer.id, offerStatus.selledStatus);
+        break;
+      default:
+        offerStore.setOfferStatus(props.offer.id, offerStatus.stockStatus);
+        break;
+    }
+  }
+
+  const mainButtonStyles = computed(() => {
+    return [{
+      [$style['_bag']]: props.offer.status === offerStatus.bagStatus,
+      [$style['_disabled']]: props.offer.status === offerStatus.selledStatus,
+    }]
+  });
+
+  const buttonContent = reactive({
+    [offerStatus.bagStatus]: signs.pay,
+    [offerStatus.stockStatus]: signs.addToOffer,
+    [offerStatus.selledStatus]: signs.payed,
+  });
 
 </script>
 
@@ -74,10 +115,17 @@
         </ul>
       </div>
       <div :class="$style.offer__buttons">
-          <button :class="$style.addButton">
-            {{ signs.addToOffer }}
+          <button
+              @click="setOfferStatus"
+              :disabled="isSelled"
+              :class="[$style.addButton, mainButtonStyles]"
+          >
+            {{ buttonContent[props.offer.status] }}
           </button>
-          <button :class="$style.favouriteButton">
+          <button
+              @click="toggleLike"
+              :class="$style.favouriteButton"
+          >
             <Icon :name="'icon:heart'"/>
           </button>
       </div>
@@ -237,6 +285,7 @@
       outline: none;
       cursor: pointer;
       height: 5rem;
+      transition: $default_transition;
     }
 
     .addButton {
@@ -244,11 +293,28 @@
 
       color: $blue_main;
       flex-grow: 1;
+
+      &._bag {
+        color: white;
+        background-color: $main_green;
+      }
+
+      &._disabled {
+        color: $blue_text_1;
+        background-color: white;
+        border: 1px solid $blue_border;
+
+        &:disabled {
+          cursor: default;
+          pointer-events: all !important;
+        }
+      }
     }
 
     .favouriteButton {
       width: 5rem;
       padding: 1.5rem;
+      stroke: white;
     }
   }
 }

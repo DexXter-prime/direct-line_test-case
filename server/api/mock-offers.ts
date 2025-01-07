@@ -2,7 +2,7 @@ export default defineEventHandler(() => {
     return {
         offers: [
             {
-                id: 1,
+                id: Math.floor(Math.random() * 10000),
                 offerType: 'Аукцион',
                 title: 'Пиломатериалы брус доска',
                 city: 'Санкт-Петербург, Красное Село',
@@ -13,11 +13,11 @@ export default defineEventHandler(() => {
                 price: 11000 ,
                 quantity: 3,
                 image: '/images/offer1.jpeg',
-                status: 'BAG',
+                status: 'STOCK',
                 liked: false,
             },
             {
-                id: 2,
+                id: Math.floor(Math.random() * 10000),
                 offerType: 'Аукцион',
                 title: 'Пиломатериалы брус доска',
                 city: 'Санкт-Петербург, Красное Село',
@@ -28,11 +28,11 @@ export default defineEventHandler(() => {
                 price: 11000 ,
                 quantity: 3,
                 image: '/images/offer1.jpeg',
-                status: 'BAG',
+                status: 'STOCK',
                 liked: false,
             },
             {
-                id: 3,
+                id: Math.floor(Math.random() * 10000),
                 offerType: 'Аукцион',
                 title: 'Пиломатериалы брус доска',
                 city: 'Санкт-Петербург, Красное Село',
@@ -47,7 +47,7 @@ export default defineEventHandler(() => {
                 liked: false,
             },
             {
-                id: 4,
+                id: Math.floor(Math.random() * 10000),
                 offerType: 'Аукцион',
                 title: 'Пиломатериалы брус доска',
                 city: 'Санкт-Петербург, Красное Село',
@@ -58,7 +58,7 @@ export default defineEventHandler(() => {
                 price: 11000 ,
                 quantity: 3,
                 image: '/images/offer1.jpeg',
-                status: 'BAG',
+                status: 'STOCK',
                 liked: false,
             },
         ],

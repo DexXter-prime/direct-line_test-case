@@ -4,11 +4,9 @@
 
 
   const offerStore = useOfferStore();
-  const offers = offerStore.offers;
+  const bagOffers = computed(() => offerStore.bagOffers);
 
-  onMounted(() => {
-    console.log(offers, 'offers');
-  });
+
 </script>
 
 <template>
@@ -17,8 +15,10 @@
         :filters="filters"
     />
   </div>
-  <OfferList
-      :offers="offers?.offers"
+  <OfferItem
+      v-for="(offer, index) in bagOffers"
+      :key="offer.id"
+      :offer="offer"
   />
 </template>
 

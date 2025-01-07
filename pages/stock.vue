@@ -5,7 +5,7 @@
 
   const filters = reactive(filterItems);
   const offerStore = useOfferStore();
-  const offers = offerStore.offers;
+  const stockOffers = computed(() => offerStore.stockOffers);
 </script>
 
 <template>
@@ -17,8 +17,10 @@
         v-model.capitalize="searchValue"
     />
   </div>
-  <OfferList
-      :offers="offers?.offers"
+  <OfferItem
+      v-for="(offer, index) in stockOffers"
+      :key="offer.id"
+      :offer="offer"
   />
 </template>
 

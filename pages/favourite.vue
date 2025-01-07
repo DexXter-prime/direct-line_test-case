@@ -3,7 +3,8 @@
 
   const filters = reactive(filterItems);
   const offerStore = useOfferStore();
-  const offers = offerStore.offers;
+  const likedOffers = computed(() => offerStore.likedOffers);
+
 </script>
 
 <template>
@@ -13,8 +14,10 @@
     />
   </div>
 
-  <OfferList
-      :offers="offers?.offers"
+  <OfferItem
+      v-for="(offer, index) in likedOffers"
+      :key="offer.id"
+      :offer="offer"
   />
 </template>
 
