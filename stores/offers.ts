@@ -5,15 +5,13 @@ export const useOfferStore = defineStore('offers', {
     state: () => {
         return {
             offers: [] as IOffer[] | null,
-            filterFlag: '',
             reqError: null,
         }
     },
     actions: {
         async fetchOffers() {
             try {
-                const data = await $fetch<IOffer[]>('/api/mock-offers');
-                this.offers = data;
+                this.offers = await $fetch<IOffer[]>('/api/mock-offers');
             } catch (e: any) {
                 this.reqError = e.message || 'Нет существующих предложений';
                 console.log(e);

@@ -1,19 +1,11 @@
 <script setup lang="ts">
-import { filterItems } from 'assets/js/consts/consts';
-const filters = reactive(filterItems);
 
-const offerStore = useOfferStore();
+  const offerStore = useOfferStore();
 
-  onServerPrefetch(async () => {
+  await callOnce(async () => {
     if (!offerStore?.offers?.length) {
       await offerStore.fetchOffers()
     }
-  })
-
-  const offers = reactive(offerStore.offers || [])
-
-  onMounted(() => {
-    console.log(offers, 'offers');
   })
 
 </script>
@@ -21,9 +13,10 @@ const offerStore = useOfferStore();
 <template>
   <div class="container">
     <TheHeader />
-    <TheFilters
-        :filters="filters"
-    />
     <NuxtPage />
   </div>
 </template>
+
+<style module lang="scss">
+
+</style>

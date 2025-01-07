@@ -41,9 +41,15 @@ function setActiveItem(idx: number) {
   justify-content: center;
   gap: 1.2rem;
   background-color: $blue_bg;
+  max-width: 30.4rem;
+  height: 4rem;
 
   .filters__item {
      @include text-l;
+
+     transition: $default_transition;
+
+     white-space: nowrap;
 
      color: $blue_text_1;
 

@@ -1,13 +1,34 @@
 <script setup lang="ts">
+  import { filterItems } from 'assets/js/consts/consts';
 
+  const searchValue = ref('');
+
+  const filters = reactive(filterItems);
+  const offerStore = useOfferStore();
+  const offers = offerStore.offers;
 </script>
 
 <template>
-    <h1 :class="$style.title">STOCK</h1>
+  <div :class="$style.mainFilters">
+    <TheFilters
+        :filters="filters"
+    />
+    <TheInput
+        v-model.capitalize="searchValue"
+    />
+  </div>
+  <OfferList
+      :offers="offers?.offers"
+  />
 </template>
 
 <style module lang="scss">
-  .title {
-    color: red;
-  }
+.mainFilters {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 7.4rem;
+  min-height: 4.8rem;
+}
 </style>

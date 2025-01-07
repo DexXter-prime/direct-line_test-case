@@ -8,7 +8,7 @@
     <nav :class="$style.TheHeader">
       <ul :class="$style.menuList">
         <li
-            v-for="(item, idx) in menuItems"
+            v-for="(item, idx) in headerMenuItems"
             :key="`menu_item_${idx}`"
             :class="$style.menuList_item"
         >
@@ -37,7 +37,7 @@
     width: 100%;
     display: flex;
     justify-content: flex-end;
-    padding: 2rem;
+    padding: 2rem 0 0;
   }
 
   .menuList {
@@ -59,6 +59,7 @@
     gap: .4rem;
     padding: .6rem;
     border-radius: $main_br_radius;
+    transition: $default_transition;
   }
 
   .menuLink_icon{

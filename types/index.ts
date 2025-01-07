@@ -1,10 +1,11 @@
-export interface IOffer {
-    id: number,
-    title: string,
-    description: string,
+
+// enums
+export enum offerStatus {
+    bagStatus = 'BAG',
+    mainOffers = 'MAIN_OFFERS'
 }
 
-
+// interfaces
 export interface IPage {
     icon: string,
     name: string,
@@ -14,4 +15,19 @@ export interface IPage {
 export interface IFilter {
     title: string,
     value: string,
+}
+
+export interface IOffer {
+    id: number,
+    offerType: string,
+    title: string,
+    city: string,
+    seller: string,
+    productType: string,
+    description: string,
+    price: number ,
+    quantity: number,
+    image: string,
+    status: offerStatus,
+    liked: boolean,
 }
