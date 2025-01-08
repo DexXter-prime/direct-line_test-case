@@ -130,7 +130,7 @@
           </button>
           <button
               @click="toggleLike"
-              :class="$style.favouriteButton"
+              :class="[$style.favouriteButton, { [$style['_liked']]: props.offer.liked }]"
           >
             <Icon
                 :name="'icon:heart'"
@@ -201,6 +201,11 @@
       color: $blue-text_1;
     }
 
+    .product__seller {
+      display: flex;
+      gap: .4rem;
+    }
+
     .product__type {
       display: flex;
       flex-direction: column;
@@ -216,6 +221,11 @@
     .product__description {
       @include text-m-v3;
 
+      max-width: 53.6rem;
+      min-height: 6.4rem;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
       color: $blue_main;
     }
 
@@ -352,6 +362,11 @@
       .buttonIcon {
         width: 2rem;
         height: 2rem;
+      }
+
+      &._liked {
+        background-color: $blue_main;
+        color: white;
       }
     }
   }
