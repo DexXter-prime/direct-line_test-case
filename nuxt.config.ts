@@ -5,9 +5,9 @@ export default defineNuxtConfig({
     nitro: {
         preset: 'static',
     },
-    app: {
-        baseURL: './',
-    },
+    // app: {
+    //     baseURL: '/direct-line_test-case/',
+    // },
     ssr: false,
     modules: [
         '@nuxt/image',

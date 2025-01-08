@@ -227,6 +227,12 @@
       white-space: nowrap;
       text-overflow: ellipsis;
       color: $blue_main;
+
+      @media (max-width: 747px) {
+        overflow: visible;
+        white-space: unset;
+        text-overflow: unset;
+      }
     }
 
     .product__cityPlace {
@@ -357,7 +363,7 @@
     .favouriteButton {
       width: 5rem;
       padding: 1.5rem;
-      color: $blue_main;
+      color: red;
 
       .buttonIcon {
         width: 2rem;
