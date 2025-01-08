@@ -61,6 +61,7 @@
   cursor: pointer;
   width: 4rem;
   height: 4rem;
+  color: white;
 }
 
 .searchIcon {

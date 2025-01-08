@@ -27,4 +27,36 @@ a {
 .container {
     margin: 0 auto;
     max-width: 1200px;
+
+    @media (max-width: 747px) {
+        padding: 0 1.5rem;
+    }
+}
+
+// transitions
+
+.offer-list-move,
+.offer-list-enter-active,
+.offer-list-leave-active {
+    transition: all 0.5s ease;
+}
+.offer-list-enter-from,
+.offer-list-leave-to {
+    opacity: 0;
+    transform: translateX(30px);
+}
+
+.offer-list-leave-active {
+    position: absolute;
+}
+
+
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.7s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+    opacity: 0;
 }

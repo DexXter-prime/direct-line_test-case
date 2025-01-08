@@ -15,7 +15,7 @@ import {type filterTypes, type IFilter, offerTypes} from "~/types";
   });
 
   const filteredOffers = computed(() => offerStore.filteredOffers(stockOffers.value));
-  const filteredAndSearch = computed(() => filteredOffers.value.filter(offer =>
+  const filteredAndSearchOffers = computed(() => filteredOffers.value.filter(offer =>
       offer.title.toLowerCase().includes(searchValue.value.toLowerCase())));
 
 </script>
@@ -30,17 +30,11 @@ import {type filterTypes, type IFilter, offerTypes} from "~/types";
         v-model.capitalize="searchValue"
     />
   </div>
-  <OfferItem
-      v-for="(offer, index) in filteredAndSearch"
-      :key="`${offer.title}_offer.id_${index}`"
-      :offer="offer"
-  />
-  <h2
-      v-if="!filteredOffers.length"
-      :class="$style.noOffers"
-  >
-    Предложения отсутствуют
-  </h2>
+  <div :class="$style.listWrapper">
+    <OfferList
+        :offers="filteredAndSearchOffers"
+    />
+  </div>
 </template>
 
 <style module lang="scss">
@@ -51,13 +45,17 @@ import {type filterTypes, type IFilter, offerTypes} from "~/types";
   width: 100%;
   margin-top: 7.4rem;
   min-height: 4.8rem;
+
+  @media (max-width: 747px) {
+    gap: 2rem;
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
-.noOffers {
-  @include text-xl;
-
-  text-align: center;
-
-  color: $blue_main;
+.listWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 </style>

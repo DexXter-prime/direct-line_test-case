@@ -22,17 +22,11 @@
         v-model="filterValue"
     />
   </div>
-  <OfferItem
-      v-for="(offer, index) in filteredOffers"
-      :key="`${offer.title}_offer.id_${index}`"
-      :offer="offer"
-  />
-  <h2
-      v-if="!filteredOffers.length"
-      :class="$style.noOffers"
-  >
-    Предложения отсутствуют
-  </h2>
+  <div :class="$style.listWrapper">
+    <OfferList
+        :offers="filteredOffers"
+    />
+  </div>
 </template>
 
 <style module lang="scss">
@@ -43,13 +37,17 @@
   width: 100%;
   margin-top: 7.4rem;
   min-height: 4.8rem;
+
+  @media (max-width: 747px) {
+    gap: 2rem;
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
-.noOffers {
-  @include text-xl;
-
-  text-align: center;
-
-  color: $blue_main;
+.listWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 </style>

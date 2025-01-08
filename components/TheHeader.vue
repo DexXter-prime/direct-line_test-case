@@ -38,6 +38,10 @@
     display: flex;
     justify-content: flex-end;
     padding: 2rem 0 0;
+
+    @media (max-width: 747px) {
+      justify-content: center;
+    }
   }
 
   .menuList {
@@ -60,6 +64,7 @@
     padding: .6rem;
     border-radius: $main_br_radius;
     transition: $default_transition;
+    color: $blue_main;
   }
 
   .menuLink_icon{

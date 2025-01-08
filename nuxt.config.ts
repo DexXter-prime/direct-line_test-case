@@ -13,6 +13,11 @@ export default defineNuxtConfig({
         stylistic: true,
       }
     },
+    image: {
+        screens: {
+            'xs': 747,
+        },
+    },
     icon: {
         customCollections: [
             {

@@ -132,7 +132,10 @@
               @click="toggleLike"
               :class="$style.favouriteButton"
           >
-            <Icon :name="'icon:heart'"/>
+            <Icon
+                :name="'icon:heart'"
+                :class="$style.buttonIcon"
+            />
           </button>
       </div>
     </div>
@@ -141,13 +144,19 @@
 
 <style module lang="scss">
 .OfferItem {
-  margin-top: 2rem;
-  width: 116.6rem;
+  width: 100%;
   height: 36.6rem;
   border: 1px solid $blue_border;
   border-radius: calc($main_br_radius * 2);
   display: flex;
   align-items: flex-start;
+  position: relative;
+
+  @media (max-width: 747px) {
+    flex-direction: column;
+    padding: 1rem;
+    height: auto;
+  }
 
   ._blue {
     color: $blue_main
@@ -163,8 +172,17 @@
   padding: 2rem;
   gap: 2rem;
 
+  @media (max-width: 747px) {
+    flex-direction: column;
+    padding: 0;
+  }
+
   .product__image {
     border-radius: $main_br_radius;
+
+    @media (max-width: 747px) {
+      width: 100%;
+    }
   }
 
   .offerInfo {
@@ -172,7 +190,7 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 1.2rem;
-    width: 53.6rem;
+    max-width: 53.6rem;
 
     .offer__type,
     .product__cityPlace,
@@ -225,8 +243,8 @@
 }
 
 .OfferItem__right {
-  max-width: 31.4rem;
-  height: 100%;
+  width: 31.4rem;
+  height: calc(100% + 2px);
   border: 1px solid $blue_border;
   border-radius: calc($main_br_radius * 2);
   padding: 2rem;
@@ -235,6 +253,15 @@
   justify-content: space-between;
   align-items: center;
   flex-grow: 2;
+  position: relative;
+  top: -1px;
+  right: -1px;
+
+  @media (max-width: 747px) {
+    margin-top: 2rem;
+    width: 100%;
+    height: 20rem;
+  }
 
   .offer__priceInfo {
     width: 100%;
@@ -320,7 +347,12 @@
     .favouriteButton {
       width: 5rem;
       padding: 1.5rem;
-      stroke: white;
+      color: $blue_main;
+
+      .buttonIcon {
+        width: 2rem;
+        height: 2rem;
+      }
     }
   }
 }
