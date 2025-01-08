@@ -2,18 +2,29 @@
 import type { IFilter } from "~/types";
 
 interface IProps {
-  filters: IFilter[]
+  filters: IFilter[],
+  modelValue: string,
 }
 
 const props = defineProps<IProps>();
+const emit = defineEmits(['update:modelValue']);
 const activeItemIndex = ref<number>(0);
+
+const initialFilterValue = computed(() => props.filters[0]?.value);
+const filterModel = ref<string>(initialFilterValue.value);
+
 
 const mainActiveItem = computed(() => {
     return props.filters[activeItemIndex.value];
 });
 
+watch(mainActiveItem, (nv) => {
+  filterModel.value = nv.value;
+  emit('update:modelValue', filterModel.value);
+})
+
 function setActiveItem(idx: number) {
-   activeItemIndex.value = idx;
+  activeItemIndex.value = idx;
 }
 
 </script>

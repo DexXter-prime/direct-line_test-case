@@ -1,11 +1,17 @@
 <script setup lang="ts">
   import { filterItems } from 'assets/js/consts/consts';
-  const filters = reactive(filterItems);
-
+  import { type filterTypes, type IFilter} from "~/types";
+  const filters = reactive<IFilter[]>(filterItems);
+  const filterValue = ref<filterTypes>(filters[0].value);
 
   const offerStore = useOfferStore();
   const bagOffers = computed(() => offerStore.bagOffers);
 
+  watch(filterValue, (nv) => {
+    offerStore.setFilterStatus(nv);
+  });
+
+  const filteredOffers = computed(() => offerStore.filteredOffers(bagOffers.value));
 
 </script>
 
@@ -13,13 +19,20 @@
   <div :class="$style.mainFilters">
     <TheFilters
         :filters="filters"
+        v-model="filterValue"
     />
   </div>
   <OfferItem
-      v-for="(offer, index) in bagOffers"
-      :key="offer.id"
+      v-for="(offer, index) in filteredOffers"
+      :key="`${offer.title}_offer.id_${index}`"
       :offer="offer"
   />
+  <h2
+      v-if="!filteredOffers.length"
+      :class="$style.noOffers"
+  >
+    Предложения отсутствуют
+  </h2>
 </template>
 
 <style module lang="scss">
@@ -30,5 +43,13 @@
   width: 100%;
   margin-top: 7.4rem;
   min-height: 4.8rem;
+}
+
+.noOffers {
+  @include text-xl;
+
+  text-align: center;
+
+  color: $blue_main;
 }
 </style>

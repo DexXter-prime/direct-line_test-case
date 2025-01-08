@@ -1,7 +1,7 @@
 <script setup lang="ts">
   import type { IOffer } from '~/types';
   import { formatNumberWithSpace } from 'assets/js/utils/numbers';
-  import { offerStatus } from "~/types";
+  import { offerStatus, offerTypes } from "~/types";
   import { useCssModule } from "vue";
 
   interface IProps {
@@ -11,6 +11,7 @@
   const signs = {
     rub: '₽',
     auction: 'Аукцион',
+    directSales: 'Прямые продажи',
     seller: 'Продавец',
     productType: 'Вид товара',
     quantity: 'Количество',
@@ -64,6 +65,11 @@
     [offerStatus.selledStatus]: signs.payed,
   });
 
+  const offerType = reactive({
+    [offerTypes.direct]: signs.directSales,
+    [offerTypes.auction]: signs.auction,
+  })
+
 </script>
 
 <template>
@@ -77,14 +83,14 @@
       />
 
       <div :class="$style.offerInfo">
-        <p :class="$style.offer__type">{{ signs.auction }}</p>
+        <p :class="$style.offer__type">{{ offerType[props.offer.offerType] }}</p>
         <h2 :class="[$style.product__title, $style._blue]">{{ props.offer.title }}</h2>
         <p :class="[$style.product__cityPlace, $style._highlight]">
           <Icon
               :name="'icon:mapmark'"
               :class="$style.mapMark"
           />
-          {{ props.offer.title }}
+          {{ props.offer.city }}
         </p>
         <p :class="$style.product__seller">
           {{ signs.seller }}

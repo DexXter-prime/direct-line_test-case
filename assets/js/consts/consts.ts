@@ -1,4 +1,4 @@
-import type { IPage, IFilter } from "~/types";
+import {type IPage, type IFilter, filterTypes} from "~/types";
 
 export const menuItems = [
     {
@@ -22,14 +22,14 @@ export const menuItems = [
 export const filterItems = [
     {
         title: 'Все типы',
-        value: 'all',
+        value: filterTypes.all,
     },
     {
         title: 'Прямые продажи',
-        value: 'direct-sales',
+        value: filterTypes.direct,
     },
     {
         title: 'Аукцион',
-        value: 'auction',
+        value: filterTypes.auction,
     }
 ] as IFilter[];

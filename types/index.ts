@@ -6,6 +6,17 @@ export enum offerStatus {
     selledStatus = 'SELLED',
 }
 
+export enum offerTypes {
+    direct = 'DIRECT',
+    auction = 'AUCTION',
+}
+
+export enum filterTypes {
+    all = 'ALL-SALES',
+    direct = 'DIRECT-SALES',
+    auction = 'AUCTION-SALES',
+}
+
 // interfaces
 export interface IPage {
     icon: string,
@@ -15,12 +26,12 @@ export interface IPage {
 
 export interface IFilter {
     title: string,
-    value: string,
+    value: filterTypes,
 }
 
 export interface IOffer {
     id: number,
-    offerType: string,
+    offerType: offerTypes,
     title: string,
     city: string,
     seller: string,
@@ -31,4 +42,10 @@ export interface IOffer {
     image: string,
     status: offerStatus,
     liked: boolean,
+}
+
+export interface IStore {
+    offers: IOffer[],
+    filterFlag: filterTypes,
+    reqError: null,
 }
