@@ -22,7 +22,6 @@
     "vue-router": "latest"
   },
   "devDependencies": {
-    "gh-pages": "^6.3.0",
     "sass": "^1.83.0",
     "typescript": "^5.7.2"
   }
