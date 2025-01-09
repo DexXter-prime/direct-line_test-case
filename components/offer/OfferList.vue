@@ -10,11 +10,7 @@ import type { IOffer } from "~/types";
 </script>
 
 <template>
-  <TransitionGroup
-      name="offer-list"
-      tag="ul"
-      :class="$style.OfferList"
-  >
+  <ul :class="$style.OfferList">
     <li
         v-for="offer in props.offers"
         :key="offer.id"
@@ -24,7 +20,8 @@ import type { IOffer } from "~/types";
           :offer="offer"
       />
     </li>
-  </TransitionGroup>
+  </ul>
+
   <Transition name="fade">
     <h2
         v-if="!props.offers.length"

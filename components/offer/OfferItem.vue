@@ -260,7 +260,7 @@
 
 .OfferItem__right {
   width: 31.4rem;
-  height: calc(100% + 2px);
+  height: calc(100% + 1.5px);
   border: 1px solid $blue_border;
   border-radius: calc($main_br_radius * 2);
   padding: 2rem;
@@ -270,8 +270,8 @@
   align-items: center;
   flex-grow: 2;
   position: relative;
-  top: -1px;
-  right: -1px;
+  top: -.5px;
+  right: -.5px;
 
   @media (max-width: 747px) {
     margin-top: 2rem;
