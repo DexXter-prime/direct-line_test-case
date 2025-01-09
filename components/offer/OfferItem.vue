@@ -355,7 +355,7 @@
 
         &:disabled {
           cursor: default;
-          pointer-events: all !important;
+          pointer-events: all;
         }
       }
     }
@@ -363,7 +363,7 @@
     .favouriteButton {
       width: 5rem;
       padding: 1.5rem;
-      color: red;
+      color: $blue_main;
 
       .buttonIcon {
         width: 2rem;
